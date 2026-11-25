@@ -31,10 +31,33 @@ body {
 }
 
 .accordeon > details > summary {
+  position: relative;
   display: block;
   flex: 1;
   min-height: 0;
+  list-style: none;
   cursor: pointer;
+}
+
+.accordeon > details > summary::marker,
+.accordeon > details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordeon > details > summary::after {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-top: 0.45rem solid transparent;
+  border-bottom: 0.45rem solid transparent;
+  border-left: 0.65rem solid #fff;
+  filter: drop-shadow(0 1px 2px #222);
+  content: "";
+  transition: transform 0.2s ease;
+}
+
+.accordeon > details[open] > summary::after {
+  transform: rotate(90deg);
 }
 
 .accordeon > details[open] > summary {
